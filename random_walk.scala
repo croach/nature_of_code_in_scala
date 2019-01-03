@@ -15,7 +15,10 @@ class RandomWalk extends PApplet {
 
   override def settings() {
     size(640, 360)
-    pixelDensity(displayDensity())
+  }
+
+  override def setup() {
+    frameRate(240)
   }
 
   override def draw() {
@@ -29,8 +32,8 @@ object RandomWalk extends App {
 }
 
 class Walker(applet: PApplet) {
-  var x: Int = applet.width/2
-  var y: Int = applet.height/2
+  var x: Float = applet.width/2
+  var y: Float = applet.height/2
 
   def display() {
     applet.stroke(0)
@@ -38,14 +41,7 @@ class Walker(applet: PApplet) {
   }
 
   def step() {
-    val choice = applet.random(4).toInt
-    if (choice == 0)
-      x += 1
-    else if (choice == 1)
-      x -= 1
-    else if (choice == 2)
-      y += 1
-    else
-      y -= 1
+    x += applet.random(3).toInt - 1
+    y += applet.random(3).toInt- 1
   }
 }
