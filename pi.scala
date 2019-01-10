@@ -7,7 +7,7 @@ class MCPi extends PApplet {
   private var points: List[Tuple2[Float, Float]] = List()
 
   override def settings() {
-    size(RADIUS * 2, RADIUS * 2)
+    size(RADIUS * 2, RADIUS * 2 + 200)
   }
 
   override def setup() {
@@ -18,11 +18,11 @@ class MCPi extends PApplet {
     background(255)
     fill(255)
     stroke(0)
-    ellipse(width/2, height/2, width, height)
+    ellipse(RADIUS, RADIUS, RADIUS*2, RADIUS*2)
 
     // Add a new point at random
-    val x = random((width + 0.00000001).toFloat)
-    val y = random((height + 0.00000001).toFloat)
+    val x = random((RADIUS*2 + 0.00000001).toFloat)
+    val y = random((RADIUS*2 + 0.00000001).toFloat)
     points = (x, y) :: points
 
     var inside = 0
@@ -50,11 +50,11 @@ class MCPi extends PApplet {
     rectMode(CENTER)
     stroke(0)
     fill(255)
-    rect(width/2, height/2, 50, 20)
+    rect(RADIUS, RADIUS, 50, 20)
 
     fill(0)
     textAlign(CENTER, CENTER)
-    text(f"${areaOfCircle}%.4f", width/2, height/2, 50, 20)
+    text(f"${areaOfCircle}%.4f", RADIUS, RADIUS, 50, 20)
   }
 }
 
